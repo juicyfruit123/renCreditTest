@@ -24,7 +24,7 @@ public class ContributionsPage extends BasePage {
     @FindBy(xpath = "//span[@class='js-calc-rate']")
     WebElement calcRate;
     @FindBy(xpath = "//span[@class='js-calc-earned']")
-    WebElement calcEarnied;
+    WebElement calcEarned;
     @FindBy(xpath = "//span[@class='js-calc-replenish']")
     WebElement calcReplenish;
     @FindBy(xpath = "//span[@class='js-calc-result']")
@@ -76,7 +76,7 @@ public class ContributionsPage extends BasePage {
      */
     private void waitCalcResult(String name) {
         (new WebDriverWait(driver, 10))
-                .until((ExpectedCondition<Boolean>) d -> !depositName.getText().equals(name));
+                .until((ExpectedCondition<Boolean>) d -> !calcResult.getText().equals(name));
     }
 
     /**
@@ -91,7 +91,7 @@ public class ContributionsPage extends BasePage {
                 Assert.assertEquals(value, calcRate.getText());
                 break;
             case "Начислено %":
-                Assert.assertEquals(value, calcEarnied.getText());
+                Assert.assertEquals(value, calcEarned.getText());
                 break;
             case "Пополнение за 6 месяцев":
                 Assert.assertEquals(value, calcReplenish.getText());
